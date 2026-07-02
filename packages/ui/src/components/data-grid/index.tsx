@@ -204,7 +204,7 @@ function DataGrid<T extends Record<string, unknown>>({
             aria-label="Seleccionar todos"
           />
         ),
-        cell: ({ row }) => (
+        cell: ({ row, table }) => (
           <input
             type="checkbox"
             checked={selected.has(row.id)}
@@ -213,7 +213,7 @@ function DataGrid<T extends Record<string, unknown>>({
               e.target.checked ? next.add(row.id) : next.delete(row.id)
               setSelected(next)
               onRowSelect?.(
-                row.getRowModel().rows.filter((r) => next.has(r.id)).map((r) => r.original)
+                table.getRowModel().rows.filter((r) => next.has(r.id)).map((r) => r.original)
               )
             }}
             className="rounded border-border accent-primary"
