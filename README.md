@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # nuvo-ui
 
 Componentes UI de código abierto para dashboards. Instalas solo lo que necesitas — el CLI copia el código directamente en tu proyecto, sin añadir una dependencia npm que nunca controlas.
@@ -320,3 +321,7 @@ Por tu usuario real de GitHub. Así el CLI descargará los componentes directame
 ## Licencia
 
 MIT © nuvo-ui contributors
+=======
+# NuvoUI
+NuvoUI
+>>>>>>> a026c4c (Initial commit)
