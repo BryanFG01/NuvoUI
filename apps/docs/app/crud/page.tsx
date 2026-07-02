@@ -19,7 +19,7 @@ import { DocTitle, DocSubtitle } from "../doc-ui"
 type Role   = "Admin" | "Editor" | "Viewer"
 type Status = "active" | "inactive"
 
-interface User {
+interface User extends Record<string, unknown> {
   id:        number
   name:      string
   email:     string
