@@ -312,6 +312,7 @@ const DataTableWithRef = React.forwardRef(DataTableInner) as <
 
 type DataTableType = typeof DataTableWithRef & {
   Column: typeof DataTableColumn
+  displayName?: string
 }
 
 const DataTable = Object.assign(DataTableWithRef, {
