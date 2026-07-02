@@ -139,7 +139,6 @@ export function ThemeSwitcher() {
             )}
             style={{
               backgroundColor: t.color,
-              ringColor: t.color,
             }}
           />
         ))}
