@@ -1,0 +1,6 @@
+{
+  "name": "modal",
+  "file": "index.tsx",
+  "dependencies": ["@radix-ui/react-dialog"],
+  "peerDependencies": ["react"]
+}

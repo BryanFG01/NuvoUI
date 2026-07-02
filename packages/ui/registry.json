@@ -1,0 +1,82 @@
+{
+  "version": "0.1.0",
+  "components": [
+    {
+      "name": "button",
+      "description": "Botón accesible con variantes y tamaños",
+      "file": "button/index.tsx",
+      "dependencies": ["class-variance-authority", "@radix-ui/react-slot"],
+      "devDependencies": []
+    },
+    {
+      "name": "badge",
+      "description": "Badge con variantes de color y dot indicator",
+      "file": "badge/index.tsx",
+      "dependencies": ["class-variance-authority"],
+      "devDependencies": []
+    },
+    {
+      "name": "card",
+      "description": "Card con Header, Title, Description, Content, Footer",
+      "file": "card/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "input",
+      "description": "Input con label, helper text y validación inline",
+      "file": "input/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "date-picker",
+      "description": "Selector de fecha accesible con label y validación",
+      "file": "date-picker/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "modal",
+      "description": "Modal accesible con Radix Dialog y Modal.Footer composable",
+      "file": "modal/index.tsx",
+      "dependencies": ["@radix-ui/react-dialog"],
+      "devDependencies": []
+    },
+    {
+      "name": "stat-card",
+      "description": "Card de métrica con trend y formato automático de números",
+      "file": "stat-card/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "data-table",
+      "description": "Tabla con API 3 capas: JSON / render / compound. Sort + búsqueda",
+      "file": "data-table/index.tsx",
+      "dependencies": ["@tanstack/react-table"],
+      "devDependencies": []
+    },
+    {
+      "name": "data-grid",
+      "description": "Tabla avanzada: edición inline, selección, visibilidad, export CSV",
+      "file": "data-grid/index.tsx",
+      "dependencies": ["@tanstack/react-table"],
+      "devDependencies": []
+    },
+    {
+      "name": "sidebar",
+      "description": "Sidebar colapsable con JSON items, submenús y localStorage",
+      "file": "sidebar/index.tsx",
+      "dependencies": ["@radix-ui/react-collapsible"],
+      "devDependencies": []
+    },
+    {
+      "name": "chart",
+      "description": "Wrapper Recharts: line, bar, area, pie — API JSON pura",
+      "file": "chart/index.tsx",
+      "dependencies": ["recharts"],
+      "devDependencies": []
+    }
+  ]
+}

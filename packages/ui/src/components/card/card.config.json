@@ -1,0 +1,6 @@
+{
+  "name": "card",
+  "file": "index.tsx",
+  "dependencies": [],
+  "peerDependencies": ["react"]
+}

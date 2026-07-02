@@ -1,0 +1,6 @@
+{
+  "name": "sidebar",
+  "file": "index.tsx",
+  "dependencies": ["@radix-ui/react-collapsible"],
+  "peerDependencies": ["react"]
+}

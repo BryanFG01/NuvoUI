@@ -1,0 +1,30 @@
+{
+  "name": "@nuvo-ui/cli",
+  "version": "0.1.0",
+  "description": "CLI para agregar componentes nuvo-ui a tu proyecto",
+  "keywords": ["ui", "components", "cli", "dashboard"],
+  "license": "MIT",
+  "bin": {
+    "nuvo-ui": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "fs-extra": "^11.2.0",
+    "ora": "^8.0.0",
+    "picocolors": "^1.0.0",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.0",
+    "@types/node": "^20.0.0",
+    "@types/prompts": "^2.4.9",
+    "typescript": "^5.4.0"
+  }
+}

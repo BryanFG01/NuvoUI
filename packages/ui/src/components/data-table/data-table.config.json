@@ -1,0 +1,6 @@
+{
+  "name": "data-table",
+  "file": "index.tsx",
+  "dependencies": ["@tanstack/react-table"],
+  "peerDependencies": ["react"]
+}

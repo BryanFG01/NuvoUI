@@ -1,0 +1,22 @@
+{
+  "name": "nuvo-ui-monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter docs dev",
+    "build": "pnpm --filter @nuvo-ui/ui build && pnpm --filter @nuvo-ui/cli build",
+    "build:cli": "pnpm --filter @nuvo-ui/cli build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm --filter @nuvo-ui/ui test"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  }
+}

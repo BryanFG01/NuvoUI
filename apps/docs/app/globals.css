@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ── Dark mode (default) — fondo #050610 ── */
+  :root {
+    --background:          235 52% 4%;
+    --foreground:          0   0%  96%;
+    --primary:             221 83% 58%;
+    --primary-foreground:  0   0%  100%;
+    --muted:               240 30% 12%;
+    --muted-foreground:    240 10% 55%;
+    --border:              240 20% 16%;
+    --destructive:         0   63% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --ring:                221 83% 58%;
+    --radius:              0.5rem;
+  }
+
+  /* ── Light mode — activado con la clase .light en <html> ── */
+  .light {
+    --background:          0   0%  100%;
+    --foreground:          222 84% 5%;
+    --primary:             221 83% 53%;
+    --primary-foreground:  210 40% 98%;
+    --muted:               210 40% 96%;
+    --muted-foreground:    215 16% 47%;
+    --border:              214 32% 91%;
+    --destructive:         0   84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --ring:                221 83% 53%;
+  }
+
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 9999px; }
+}

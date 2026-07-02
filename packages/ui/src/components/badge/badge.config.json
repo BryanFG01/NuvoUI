@@ -1,0 +1,6 @@
+{
+  "name": "badge",
+  "file": "index.tsx",
+  "dependencies": ["class-variance-authority"],
+  "peerDependencies": ["react"]
+}

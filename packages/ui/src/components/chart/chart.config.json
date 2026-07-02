@@ -1,0 +1,6 @@
+{
+  "name": "chart",
+  "file": "index.tsx",
+  "dependencies": ["recharts"],
+  "peerDependencies": ["react"]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "date-picker",
+  "file": "index.tsx",
+  "dependencies": [],
+  "peerDependencies": ["react"]
+}

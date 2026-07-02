@@ -1,0 +1,6 @@
+{
+  "name": "input",
+  "file": "index.tsx",
+  "dependencies": [],
+  "peerDependencies": ["react"]
+}
