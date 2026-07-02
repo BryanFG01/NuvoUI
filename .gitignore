@@ -9,3 +9,10 @@ out/
 .DS_Store
 *.log
 coverage/
+.next/
+dist/
+*.local
+.env
+.env.*
+!.env.example
+pnpm-lock.yaml
