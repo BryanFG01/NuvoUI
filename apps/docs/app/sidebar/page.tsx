@@ -35,15 +35,16 @@ export default function SidebarPage() {
       <div>
         <DocTitle>Sidebar</DocTitle>
         <DocSubtitle>
-          Navegación lateral colapsable. API 100% JSON — pasa un array de items.
-          Submenús con Radix Collapsible. Estado de colapso persistido en localStorage.
+          Navegación lateral colapsable. Se desliza fuera de pantalla con animación suave y
+          una pestaña que permite re-expandirlo. API JSON: lista plana de items o agrupada
+          por secciones. Submenús con Radix Collapsible. Estado persistido en localStorage.
         </DocSubtitle>
       </div>
 
       <DocInstall component="sidebar" />
       <DocDivider />
 
-      <DocSection title="Demo interactivo" description="Haz click en 'Usuarios' para ver el submenú. La flecha izquierda colapsa el sidebar.">
+      <DocSection title="Demo interactivo" description="Clic en «Usuarios» para el submenú. El chevron izquierdo colapsa el sidebar — desliza fuera de pantalla con una pestaña › para re-expandir.">
         <Preview className="p-0 overflow-hidden">
           <div className="flex h-80">
             <Sidebar
@@ -53,9 +54,12 @@ export default function SidebarPage() {
               storageKey="docs-sidebar-demo"
               logo={
                 <div className="flex items-center gap-2">
-                  <span className="h-6 w-6 rounded bg-primary flex items-center justify-center text-xs font-bold text-primary-foreground">L</span>
+                  <span className="h-6 w-6 rounded-md bg-primary flex items-center justify-center text-xs font-bold text-primary-foreground">L</span>
                   <span className="font-semibold text-foreground text-sm">Mi App</span>
                 </div>
+              }
+              footer={
+                <p className="text-[10px] text-muted-foreground/60">MIT · v1.0.0</p>
               }
             />
             <div className="flex flex-1 items-center justify-center bg-muted/30 text-sm text-muted-foreground">
@@ -65,6 +69,7 @@ export default function SidebarPage() {
         </Preview>
         <Code code={`import { Sidebar } from "@/components/ui/sidebar"
 
+// Flat list
 const items = [
   { label: "Dashboard",  href: "/",      icon: HomeIcon },
   { label: "Analíticas", href: "/stats", icon: ChartIcon },
@@ -72,7 +77,7 @@ const items = [
     label: "Usuarios",
     href: "/users",
     icon: UsersIcon,
-    badge: 3,               // número en badge rojo
+    badge: 3,               // badge en rojo
     children: [             // submenú colapsable
       { label: "Todos",        href: "/users" },
       { label: "Invitaciones", href: "/users/invites" },
@@ -80,16 +85,23 @@ const items = [
   },
 ]
 
+// O agrupado por secciones
+const sections = [
+  { section: "Principal", items: [{ label: "Dashboard", href: "/" }] },
+  { section: "Gestión",   items: [{ label: "Usuarios",  href: "/users" }] },
+]
+
 // En Next.js:
 const pathname = usePathname()
 const router   = useRouter()
 
 <Sidebar
-  items={items}
+  items={items}              // o sections={sections}
   activeHref={pathname}
   onNavigate={(href) => router.push(href)}
   logo={<MyLogo />}
-  storageKey="mi-app-sidebar"   // clave de localStorage
+  footer={<p>v1.0</p>}
+  storageKey="mi-app-sidebar"
 />`} />
         <DocNote>
           El estado de colapso se persiste en <code>localStorage</code> con la clave
@@ -99,26 +111,31 @@ const router   = useRouter()
 
       <DocDivider />
 
-      <DocSection title="Props">
+      <DocSection title="Props — Sidebar">
         <PropsTable
           props={[
-            { name: "items",            type: "SidebarItem[]",            description: "Array de items de navegación" },
-            { name: "activeHref",       type: "string",     default: "—", description: "Href activo (resalta el item correspondiente)" },
-            { name: "onNavigate",       type: "(href: string) => void", default: "—", description: "Callback al hacer click en un item" },
-            { name: "logo",             type: "ReactNode",  default: "—", description: "Contenido del logo (modo expandido)" },
-            { name: "collapsedLogo",    type: "ReactNode",  default: "—", description: "Logo alternativo cuando el sidebar está colapsado" },
-            { name: "footer",           type: "ReactNode",  default: "—", description: "Contenido del pie (solo visible en modo expandido)" },
-            { name: "defaultCollapsed", type: "boolean",    default: "false", description: "Estado inicial de colapso" },
-            { name: "storageKey",       type: "string",     default: '"nuvo-ui-sidebar"', description: "Clave de localStorage para persistir el estado" },
+            { name: "items",            type: "SidebarItem[]",          default: "—",     description: "Lista plana de items de navegación" },
+            { name: "sections",         type: "SidebarSection[]",       default: "—",     description: "Items agrupados por sección con encabezado. Alternativo a items." },
+            { name: "activeHref",       type: "string",                 default: "—",     description: "Href activo — resalta el item correspondiente con barra lateral" },
+            { name: "onNavigate",       type: "(href: string) => void", default: "—",     description: "Callback al hacer clic en un item (previene navegación nativa)" },
+            { name: "logo",             type: "ReactNode",              default: "—",     description: "Área del logo en el header del sidebar" },
+            { name: "footer",           type: "ReactNode",              default: "—",     description: "Contenido del pie, visible solo cuando está expandido" },
+            { name: "defaultCollapsed", type: "boolean",                default: "false", description: "Estado inicial de colapso" },
+            { name: "storageKey",       type: "string",                 default: '"nuvo-ui-sidebar"', description: "Clave de localStorage — cada instancia puede tener la suya" },
+            { name: "width",            type: "number",                 default: "240",   description: "Ancho en px del sidebar cuando está expandido" },
+            { name: "className",        type: "string",                 default: "—",     description: "Clases extra en el contenedor raíz" },
           ]}
         />
+      </DocSection>
+
+      <DocSection title="Tipo SidebarItem">
         <PropsTable
           props={[
-            { name: "label",    type: "string",      description: "Texto del item" },
-            { name: "href",     type: "string",      description: "URL de destino" },
-            { name: "icon",     type: "ElementType", default: "—", description: "Ícono SVG como componente React" },
-            { name: "badge",    type: "string | number", default: "—", description: "Contador en badge primario" },
-            { name: "children", type: "SidebarChildItem[]", default: "—", description: "Sub-items del menú colapsable" },
+            { name: "label",    type: "string",           description: "Texto del item" },
+            { name: "href",     type: "string",           description: "URL de destino" },
+            { name: "icon",     type: "ElementType",      default: "—", description: "Ícono como componente React (recibe className)" },
+            { name: "badge",    type: "string | number",  default: "—", description: "Contador en badge primario" },
+            { name: "children", type: "SidebarChildItem[]", default: "—", description: "Sub-items del menú colapsable (Radix Collapsible)" },
           ]}
         />
       </DocSection>

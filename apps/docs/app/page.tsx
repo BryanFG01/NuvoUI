@@ -108,15 +108,18 @@ export default {
       <DocSection title="Componentes disponibles">
         <div className="grid gap-3 sm:grid-cols-2">
           {[
-            { name: "Button",    cmd: "button",    desc: "6 variantes, 4 tamaños, asChild" },
-            { name: "Badge",     cmd: "badge",     desc: "6 variantes de color, dot indicator" },
-            { name: "Card",      cmd: "card",      desc: "Header, Title, Description, Content, Footer" },
-            { name: "Input",     cmd: "input",     desc: "Label, helper text, validación inline" },
-            { name: "Modal",     cmd: "modal",     desc: "Radix Dialog + Modal.Footer composable" },
-            { name: "StatCard",  cmd: "stat-card", desc: "Métrica con trend y formato automático" },
-            { name: "DataTable", cmd: "data-table",desc: "API 3 capas: JSON / render / compound" },
-            { name: "Sidebar",   cmd: "sidebar",   desc: "JSON items, submenús, localStorage" },
-            { name: "Chart",     cmd: "chart",     desc: "line, bar, area, pie — Recharts wrapper" },
+            { name: "Button",         cmd: "button",          desc: "6 variantes, 4 tamaños, asChild" },
+            { name: "Badge",          cmd: "badge",           desc: "6 variantes de color, dot indicator" },
+            { name: "Card",           cmd: "card",            desc: "Header, Title, Description, Content, Footer" },
+            { name: "Input",          cmd: "input",           desc: "Label, helper text, validación inline" },
+            { name: "DatePicker",     cmd: "date-picker",     desc: "Selector de fecha nativo con min/max y modo oscuro" },
+            { name: "Modal",          cmd: "modal",           desc: "Radix Dialog + Modal.Footer composable" },
+            { name: "StatCard",       cmd: "stat-card",       desc: "Métrica con trend y formato automático" },
+            { name: "DataTable",      cmd: "data-table",      desc: "API 3 capas: JSON / render / compound" },
+            { name: "DataGrid",       cmd: "data-grid",       desc: "Edición inline, selección, exportar CSV" },
+            { name: "Sidebar",        cmd: "sidebar",         desc: "Slide-out colapsable, secciones, localStorage" },
+            { name: "Chart",          cmd: "chart",           desc: "line, bar, area, pie — Recharts wrapper" },
+            { name: "FloatingActions",cmd: "floating-actions",desc: "Botones flotantes arrastrables, N acciones por JSON" },
           ].map(({ name, cmd, desc }) => (
             <div key={cmd} className="rounded-lg border border-border bg-background p-4">
               <div className="flex items-center justify-between">
