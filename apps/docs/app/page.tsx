@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { DocTitle, DocSubtitle, DocSection, Code, DocNote, DocDivider } from "./doc-ui"
 
 export default function GettingStartedPage() {
@@ -119,17 +120,22 @@ export default {
             { name: "DataGrid",       cmd: "data-grid",       desc: "Edición inline, selección, exportar CSV" },
             { name: "Sidebar",        cmd: "sidebar",         desc: "Slide-out colapsable, secciones, localStorage" },
             { name: "Chart",          cmd: "chart",           desc: "line, bar, area, pie — Recharts wrapper" },
-            { name: "FloatingActions",cmd: "floating-actions",desc: "Botones flotantes arrastrables, N acciones por JSON" },
+            { name: "FloatingActions",cmd: "floating-actions", desc: "Botones flotantes arrastrables, N acciones por JSON" },
+            { name: "DynamicFilter",  cmd: "dynamic-filter",  desc: "Filtros configurables por JSON: text, select, multiselect, date, boolean" },
           ].map(({ name, cmd, desc }) => (
-            <div key={cmd} className="rounded-lg border border-border bg-background p-4">
+            <Link
+              key={cmd}
+              href={`/${cmd}`}
+              className="group rounded-lg border border-border bg-background p-4 transition-colors hover:border-primary/40 hover:bg-primary/5"
+            >
               <div className="flex items-center justify-between">
-                <span className="font-semibold text-foreground">{name}</span>
+                <span className="font-semibold text-foreground group-hover:text-primary transition-colors">{name}</span>
                 <code className="rounded bg-muted px-1.5 py-0.5 text-[11px] text-muted-foreground">
                   {cmd}
                 </code>
               </div>
               <p className="mt-1 text-xs text-muted-foreground">{desc}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </DocSection>

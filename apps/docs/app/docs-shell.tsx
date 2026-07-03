@@ -26,6 +26,7 @@ const NAV = [
       { label: "Sidebar",    href: "/sidebar" },
       { label: "Chart",           href: "/chart" },
       { label: "FloatingActions", href: "/floating-actions" },
+      { label: "DynamicFilter",  href: "/dynamic-filter" },
     ],
   },
   {
