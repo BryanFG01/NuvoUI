@@ -49,7 +49,7 @@ function DatePicker({
       <CalendarInput
         id={inputId}
         value={value}
-        onChange={onChange}
+        onChange={onChange ?? (() => {})}
         min={min as string | undefined}
         max={max as string | undefined}
         disabled={disabled}
