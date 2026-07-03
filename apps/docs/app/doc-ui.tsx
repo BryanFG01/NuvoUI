@@ -57,7 +57,7 @@ export function Preview({
   return (
     <div
       className={cn(
-        "rounded-lg border border-border bg-background p-6",
+        "rounded-lg border border-border bg-background p-4 md:p-6",
         center && "flex flex-wrap items-center justify-center gap-3",
         className
       )}
