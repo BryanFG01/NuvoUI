@@ -3,9 +3,11 @@ import * as fs from "fs-extra"
 
 // Prevents path traversal: ensures targetPath stays inside the project directory
 function assertWithinProject(targetPath: string): void {
-  const resolved  = path.resolve(targetPath)
+  const resolved   = path.resolve(targetPath)
   const projectDir = path.resolve(process.cwd())
-  if (!resolved.startsWith(projectDir + path.sep) && resolved !== projectDir) {
+  // path.relative handles case-insensitive filesystems (Windows/macOS) correctly
+  const relative   = path.relative(projectDir, resolved)
+  if (relative.startsWith("..") || path.isAbsolute(relative)) {
     throw new Error(
       `Ruta de destino fuera del directorio del proyecto.\n  Target: ${resolved}\n  Project: ${projectDir}`
     )

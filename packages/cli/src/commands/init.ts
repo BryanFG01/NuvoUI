@@ -82,9 +82,20 @@ export async function initCommand(): Promise<void> {
     }
   )
 
+  const componentsDir = (answers.componentsDir as string).trim()
+  const SAFE_DIR_RE   = /^[a-zA-Z0-9_][a-zA-Z0-9_/.-]*$/
+  if (
+    !SAFE_DIR_RE.test(componentsDir) ||
+    componentsDir.startsWith("/") ||
+    componentsDir.includes("..")
+  ) {
+    console.log(pc.red("\n  Ruta inválida. Usa una ruta relativa como: components/ui\n"))
+    process.exit(1)
+  }
+
   const config: LibreriaConfig = {
     version: "0.1.0",
-    componentsDir: answers.componentsDir as string,
+    componentsDir,
     typescript: answers.typescript as boolean,
     tailwind: {
       config: answers.tailwindConfig as string,
