@@ -1,9 +1,18 @@
 {
   "name": "nuvo-ui",
   "version": "0.1.0",
-  "description": "CLI para agregar componentes nuvo-ui a tu proyecto",
-  "keywords": ["ui", "components", "cli", "dashboard"],
+  "description": "CLI para agregar componentes UI a tu proyecto. El código es tuyo desde el primer día.",
+  "keywords": ["ui", "components", "cli", "dashboard", "react", "tailwind", "shadcn"],
   "license": "MIT",
+  "homepage": "https://github.com/BryanFG01/NuvoUI#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BryanFG01/NuvoUI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BryanFG01/NuvoUI/issues"
+  },
+  "author": "Bryan Fernandez",
   "bin": {
     "nuvo-ui": "./dist/index.js"
   },
