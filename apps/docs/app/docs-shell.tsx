@@ -114,6 +114,172 @@ function CloseIcon() {
   )
 }
 
+// ─── Welcome Banner ───────────────────────────────────────────────────────────
+
+function IconCode() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+    </svg>
+  )
+}
+function IconPen() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+    </svg>
+  )
+}
+function IconClock() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+    </svg>
+  )
+}
+
+const BENEFITS = [
+  {
+    icon: <IconCode />,
+    title: "Control total",
+    desc: "Eres dueño del código de los componentes.",
+  },
+  {
+    icon: <IconPen />,
+    title: "Diseño único",
+    desc: "Puedes crear tu propio estilo.",
+  },
+  {
+    icon: <IconClock />,
+    title: "Ahorro de tiempo",
+    desc: "No tienes que crear los componentes desde cero.",
+  },
+]
+
+const DURATION = 7000
+
+function WelcomeBanner() {
+  const [visible, setVisible] = React.useState(false)
+  const [exiting, setExiting] = React.useState(false)
+  const [progress, setProgress] = React.useState(100)
+
+  React.useEffect(() => {
+    // Show banner on every visit with a small delay
+    const show = setTimeout(() => setVisible(true), 400)
+    return () => clearTimeout(show)
+  }, [])
+
+  React.useEffect(() => {
+    if (!visible) return
+
+    // Progress bar countdown
+    const start = Date.now()
+    const tick = setInterval(() => {
+      const elapsed = Date.now() - start
+      const pct = Math.max(0, 100 - (elapsed / DURATION) * 100)
+      setProgress(pct)
+      if (pct === 0) clearInterval(tick)
+    }, 50)
+
+    // Auto-dismiss
+    const hide = setTimeout(() => dismiss(), DURATION)
+
+    return () => { clearInterval(tick); clearTimeout(hide) }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible])
+
+  function dismiss() {
+    setExiting(true)
+    setTimeout(() => setVisible(false), 350)
+  }
+
+  if (!visible) return null
+
+  return (
+    <div
+      className={cn(
+        "fixed inset-0 z-[100] flex items-center justify-center p-4",
+        "bg-black/50 backdrop-blur-sm",
+        "transition-opacity duration-300",
+        exiting ? "opacity-0" : "opacity-100"
+      )}
+      onClick={dismiss}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className={cn(
+          "relative w-full max-w-md overflow-hidden rounded-2xl border border-border bg-background shadow-2xl",
+          "transition-all duration-350",
+          exiting ? "scale-95 opacity-0 translate-y-2" : "scale-100 opacity-100 translate-y-0"
+        )}
+        style={{ transition: "transform 0.35s ease, opacity 0.35s ease" }}
+      >
+        {/* Progress bar */}
+        <div className="absolute top-0 left-0 h-[3px] w-full bg-border">
+          <div
+            className="h-full bg-primary transition-none"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+
+        {/* Header */}
+        <div className="flex items-start justify-between px-6 pt-6 pb-4">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-lg font-bold text-foreground">NuvoUI</span>
+              <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-primary">
+                Open Source
+              </span>
+            </div>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Componentes que son 100% tuyos desde el primer día.
+            </p>
+          </div>
+          <button
+            onClick={dismiss}
+            aria-label="Cerrar"
+            className="ml-4 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+        {/* Benefits */}
+        <div className="space-y-3 px-6 pb-6">
+          {BENEFITS.map(({ icon, title, desc }) => (
+            <div key={title} className="flex items-start gap-3">
+              <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                {icon}
+              </span>
+              <div>
+                <p className="text-sm font-semibold text-foreground">{title}</p>
+                <p className="text-xs text-muted-foreground">{desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div className="border-t border-border bg-muted/30 px-6 py-3 text-center">
+          <p className="text-xs text-muted-foreground">
+            Totalmente open source ·{" "}
+            <a
+              href="https://github.com/BryanFG01/NuvoUI"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-primary hover:underline"
+            >
+              Ver en GitHub
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function GitHubIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -310,6 +476,7 @@ export function DocsShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex min-h-screen bg-background">
+      <WelcomeBanner />
       {/* ── Desktop sidebar (always visible ≥ md) ───────────────────────── */}
       <aside
         className={cn(
