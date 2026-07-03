@@ -30,13 +30,6 @@
       "devDependencies": []
     },
     {
-      "name": "date-picker",
-      "description": "Selector de fecha accesible con label y validación",
-      "file": "date-picker/index.tsx",
-      "dependencies": [],
-      "devDependencies": []
-    },
-    {
       "name": "modal",
       "description": "Modal accesible con Radix Dialog y Modal.Footer composable",
       "file": "modal/index.tsx",
@@ -77,6 +70,36 @@
       "file": "chart/index.tsx",
       "dependencies": ["recharts"],
       "devDependencies": []
+    },
+    {
+      "name": "calendar",
+      "description": "Calendario custom sin dependencias: grid 42 slots, year picker, min/max",
+      "file": "calendar/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "date-picker",
+      "description": "Selector de fecha con calendario custom, label, helper text y validación",
+      "file": "date-picker/index.tsx",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": ["calendar"]
+    },
+    {
+      "name": "floating-actions",
+      "description": "Botones flotantes arrastrables configurables por JSON, N acciones, variantes",
+      "file": "floating-actions/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "dynamic-filter",
+      "description": "Filtros dinámicos por JSON: text, select, multiselect, date, daterange, boolean, number",
+      "file": "dynamic-filter/index.tsx",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": ["calendar"]
     }
   ]
 }

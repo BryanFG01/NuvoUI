@@ -1,5 +1,7 @@
+"use client"
+
 import Link from "next/link"
-import { DocTitle, DocSubtitle, DocSection, Code, DocNote, DocDivider } from "./doc-ui"
+import { DocTitle, DocSubtitle, DocSection, Code, DocNote, DocDivider, PMInstallBlock } from "./doc-ui"
 
 export default function GettingStartedPage() {
   return (
@@ -13,18 +15,13 @@ export default function GettingStartedPage() {
       </div>
 
       <DocSection title="Inicio rápido">
-        <Code
-          code={`# 1. Inicializar (crea nuvo-ui.json con tu config)
-pnpm dlx nuvo-ui init
-
-# 2. Agregar los componentes que necesitas
-pnpm dlx nuvo-ui add button data-table sidebar chart
-
-# 3. Listo — el código está en components/ui/`}
+        <PMInstallBlock
+          initCmd="init"
+          addCmd="button data-table sidebar chart"
         />
         <DocNote>
-          El CLI detecta automáticamente si usas pnpm, npm, yarn o bun e instala las
-          dependencias necesarias de cada componente.
+          El CLI detecta automáticamente el gestor de paquetes de tu proyecto e instala
+          las dependencias necesarias de cada componente.
         </DocNote>
       </DocSection>
 

@@ -1,5 +1,5 @@
 {
-  "name": "@nuvo-ui/cli",
+  "name": "nuvo-ui",
   "version": "0.1.0",
   "description": "CLI para agregar componentes nuvo-ui a tu proyecto",
   "keywords": ["ui", "components", "cli", "dashboard"],

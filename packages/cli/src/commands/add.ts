@@ -19,6 +19,7 @@ interface RegistryEntry {
   file: string
   dependencies: string[]
   devDependencies?: string[]
+  registryDependencies?: string[]  // otros componentes NuvoUI requeridos
 }
 
 interface Registry {
@@ -56,18 +57,26 @@ export async function addCommand(componentNames: string[]): Promise<void> {
 
   const available = new Map(registry.components.map((c) => [c.name, c]))
 
-  // 3. Validar componentes solicitados
-  const valid: RegistryEntry[] = []
-  for (const name of componentNames) {
+  // 3. Validar componentes solicitados + resolver dependencias de registro
+  const requested = new Set<string>()
+  const toInstall: RegistryEntry[] = []
+
+  function resolve(name: string): void {
+    if (requested.has(name)) return
+    requested.add(name)
     const entry = available.get(name)
     if (!entry) {
       console.log(pc.yellow(`  ⚠  "${name}" no existe en el registro. Disponibles: ${[...available.keys()].join(", ")}`))
-    } else {
-      valid.push(entry)
+      return
     }
+    // Resolver dependencias de componentes primero (para que queden antes en el array)
+    for (const dep of entry.registryDependencies ?? []) resolve(dep)
+    toInstall.push(entry)
   }
 
-  if (valid.length === 0) {
+  for (const name of componentNames) resolve(name)
+
+  if (toInstall.length === 0) {
     console.log(pc.red("\n  No se agregó ningún componente.\n"))
     process.exit(1)
   }
@@ -75,13 +84,15 @@ export async function addCommand(componentNames: string[]): Promise<void> {
   // 4. Descargar y escribir cada componente
   const allDeps = new Set<string>()
   const allDevDeps = new Set<string>()
+  const ext = config.typescript ? "tsx" : "jsx"
 
-  for (const entry of valid) {
+  for (const entry of toInstall) {
     const spinner = ora(`Descargando ${entry.name}...`).start()
     try {
       const source = await fetchComponent(entry.name)
-      const ext = config.typescript ? "tsx" : "jsx"
-      const targetPath = path.join(process.cwd(), config.componentsDir, `${entry.name}.${ext}`)
+      // Escribe como carpeta: components/ui/button/index.tsx
+      // así los imports relativos entre componentes (../calendar) funcionan
+      const targetPath = path.join(process.cwd(), config.componentsDir, entry.name, `index.${ext}`)
 
       await writeComponentFile(targetPath, source)
 

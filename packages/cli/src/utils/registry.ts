@@ -1,9 +1,8 @@
-// Change YOUR_GITHUB_USERNAME to your real GitHub user before publishing.
 const GITHUB_BASE =
-  "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/nuvo-ui/main/packages/ui/src/components"
+  "https://raw.githubusercontent.com/BryanFG01/NuvoUI/main/packages/ui/src/components"
 
 const REGISTRY_URL =
-  "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/nuvo-ui/main/packages/ui/registry.json"
+  "https://raw.githubusercontent.com/BryanFG01/NuvoUI/main/packages/ui/registry.json"
 
 // Only lowercase letters, digits and hyphens — prevents path traversal and injection
 const SAFE_NAME_RE = /^[a-z][a-z0-9-]{0,63}$/

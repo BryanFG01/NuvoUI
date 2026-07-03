@@ -15,10 +15,85 @@ export function DocSubtitle({ children }: { children: React.ReactNode }) {
   return <p className="mt-2 text-base text-muted-foreground">{children}</p>
 }
 
-export function DocInstall({ component }: { component: string }) {
+// ─── Package manager tabs ─────────────────────────────────────────────────────
+
+type PM = "pnpm" | "npm" | "yarn" | "bun"
+
+const PM_EXEC: Record<PM, string> = {
+  pnpm: "pnpm dlx",
+  npm:  "npx",
+  yarn: "yarn dlx",
+  bun:  "bunx",
+}
+
+const PM_LIST: PM[] = ["pnpm", "npm", "yarn", "bun"]
+
+function PMTabBar({
+  active,
+  onChange,
+}: {
+  active: PM
+  onChange: (pm: PM) => void
+}) {
   return (
-    <div className="rounded-lg border border-border bg-muted/40 px-4 py-3 font-mono text-sm text-muted-foreground">
-      pnpm dlx nuvo-ui add {component}
+    <div className="flex gap-1 rounded-t-lg border border-b-0 border-border bg-muted/50 px-2 pt-2">
+      {PM_LIST.map((pm) => (
+        <button
+          key={pm}
+          type="button"
+          onClick={() => onChange(pm)}
+          className={cn(
+            "rounded-t-md px-3 py-1.5 text-xs font-medium transition-colors",
+            active === pm
+              ? "bg-black/40 text-slate-200"
+              : "text-muted-foreground hover:text-foreground"
+          )}
+        >
+          {pm}
+        </button>
+      ))}
+    </div>
+  )
+}
+
+export function DocInstall({ component }: { component: string }) {
+  const [pm, setPm] = React.useState<PM>("pnpm")
+  const cmd = `${PM_EXEC[pm]} nuvo-ui add ${component}`
+  return (
+    <div>
+      <PMTabBar active={pm} onChange={setPm} />
+      <pre className="overflow-x-auto rounded-b-lg rounded-tr-lg border border-border bg-black/40 px-4 py-3 text-xs text-slate-200">
+        <code>{cmd}</code>
+      </pre>
+    </div>
+  )
+}
+
+export function PMInstallBlock({
+  initCmd,
+  addCmd,
+}: {
+  initCmd: string
+  addCmd: string
+}) {
+  const [pm, setPm] = React.useState<PM>("pnpm")
+  const exec = PM_EXEC[pm]
+  const code = [
+    `# 1. Inicializar (crea nuvo-ui.json con tu config)`,
+    `${exec} nuvo-ui init`,
+    ``,
+    `# 2. Agregar los componentes que necesitas`,
+    `${exec} nuvo-ui add ${addCmd}`,
+    ``,
+    `# 3. Listo — el código está en components/ui/`,
+  ].join("\n")
+
+  return (
+    <div>
+      <PMTabBar active={pm} onChange={setPm} />
+      <pre className="overflow-x-auto rounded-b-lg rounded-tr-lg border border-border bg-black/40 p-4 text-xs leading-relaxed text-slate-200">
+        <code>{code}</code>
+      </pre>
     </div>
   )
 }
