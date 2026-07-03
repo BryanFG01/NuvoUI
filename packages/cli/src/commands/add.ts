@@ -129,6 +129,6 @@ export async function addCommand(componentNames: string[]): Promise<void> {
   }
 
   console.log(
-    pc.bold(pc.green(`\n  ✓ ${valid.length} componente(s) listo(s) en ${config.componentsDir}\n`))
+    pc.bold(pc.green(`\n  ✓ ${toInstall.length} componente(s) listo(s) en ${config.componentsDir}\n`))
   )
 }
