@@ -1,6 +1,6 @@
 'use client'
 
-import { Badge, cn } from '@nuvo-ui/ui'
+import { Badge, cn, ThemeSwitcher as ModeSwitcher } from '@nuvo-ui/ui'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import * as React from 'react'
@@ -12,21 +12,75 @@ const NAV = [
     items: [{ label: 'Instalación', href: '/' }]
   },
   {
-    section: 'Componentes',
+    section: 'Feedback',
     items: [
-      { label: 'Button', href: '/button' },
-      { label: 'Badge', href: '/badge' },
-      { label: 'Card', href: '/card' },
-      { label: 'Input', href: '/input' },
-      { label: 'DatePicker', href: '/date-picker' },
-      { label: 'Modal', href: '/modal' },
-      { label: 'StatCard', href: '/stat-card' },
+      { label: 'Alert',    href: '/alert' },
+      { label: 'Skeleton', href: '/skeleton' },
+      { label: 'Spinner',  href: '/spinner' },
+      { label: 'Toast',    href: '/toast' },
+    ]
+  },
+  {
+    section: 'Navegación',
+    items: [
+      { label: 'Breadcrumb', href: '/breadcrumb' },
+      { label: 'Pagination', href: '/pagination' },
+      { label: 'Tabs',       href: '/tabs' },
+    ]
+  },
+  {
+    section: 'Formularios',
+    items: [
+      { label: 'Button',       href: '/button' },
+      { label: 'Checkbox',     href: '/checkbox' },
+      { label: 'DatePicker',   href: '/date-picker' },
+      { label: 'DynamicFilter',href: '/dynamic-filter' },
+      { label: 'FileUpload',   href: '/file-upload' },
+      { label: 'Input',        href: '/input' },
+      { label: 'Radio',        href: '/radio' },
+      { label: 'Select',       href: '/select' },
+      { label: 'Switch',       href: '/switch' },
+      { label: 'Textarea',     href: '/textarea' },
+    ]
+  },
+  {
+    section: 'Layout',
+    items: [
+      { label: 'Avatar',   href: '/avatar' },
+      { label: 'Badge',    href: '/badge' },
+      { label: 'Card',     href: '/card' },
+      { label: 'Divider',  href: '/divider' },
+      { label: 'Dropdown', href: '/dropdown' },
+      { label: 'Modal',    href: '/modal' },
+      { label: 'Tooltip',  href: '/tooltip' },
+    ]
+  },
+  {
+    section: 'Datos',
+    items: [
+      { label: 'Chart',     href: '/chart' },
+      { label: 'DataGrid',  href: '/data-grid' },
       { label: 'DataTable', href: '/data-table' },
-      { label: 'DataGrid', href: '/data-grid' },
-      { label: 'Sidebar', href: '/sidebar' },
-      { label: 'Chart', href: '/chart' },
+      { label: 'StatCard',  href: '/stat-card' },
+    ]
+  },
+  {
+    section: 'Avanzados',
+    items: [
       { label: 'FloatingActions', href: '/floating-actions' },
-      { label: 'DynamicFilter', href: '/dynamic-filter' }
+      { label: 'Login',           href: '/login' },
+      { label: 'Sidebar',         href: '/sidebar' },
+      { label: 'Stepper',         href: '/stepper' },
+      { label: 'Timeline',        href: '/timeline' },
+    ]
+  },
+  {
+    section: 'Reportería',
+    items: [
+      { label: 'DashboardLayout', href: '/dashboard-layout' },
+      { label: 'ExportCSV',       href: '/export-csv' },
+      { label: 'PrintButton',     href: '/print-button' },
+      { label: 'ThemeProvider',   href: '/theme-provider' },
     ]
   },
   {
@@ -288,75 +342,6 @@ function GitHubIcon() {
   )
 }
 
-function MoonIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-    </svg>
-  )
-}
-
-function SunIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <circle cx="12" cy="12" r="5" />
-      <line x1="12" y1="1" x2="12" y2="3" />
-      <line x1="12" y1="21" x2="12" y2="23" />
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-      <line x1="1" y1="12" x2="3" y2="12" />
-      <line x1="21" y1="12" x2="23" y2="12" />
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-    </svg>
-  )
-}
-
-// ─── Hooks ────────────────────────────────────────────────────────────────────
-
-function useDarkLight() {
-  const [isLight, setIsLight] = React.useState(false)
-
-  React.useEffect(() => {
-    const stored = localStorage.getItem('nuvo-ui-mode')
-    if (stored === 'light') {
-      document.documentElement.classList.add('light')
-      setIsLight(true)
-    }
-  }, [])
-
-  function toggle() {
-    const next = !isLight
-    document.documentElement.classList.toggle('light', next)
-    localStorage.setItem('nuvo-ui-mode', next ? 'light' : 'dark')
-    setIsLight(next)
-  }
-
-  return { isLight, toggle }
-}
-
 // ─── Sidebar nav content (shared between desktop and mobile) ──────────────────
 
 function SidebarContent({
@@ -442,27 +427,18 @@ function SidebarContent({
 
 export function DocsShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
-  const { isLight, toggle } = useDarkLight()
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [collapsed, setCollapsed] = React.useState(false)
 
-  // Load sidebar collapsed state from localStorage
+  // All hooks must run before any conditional return
   React.useEffect(() => {
     if (localStorage.getItem('nuvo-ui-sidebar') === 'collapsed') setCollapsed(true)
   }, [])
 
-  function toggleCollapsed() {
-    const next = !collapsed
-    setCollapsed(next)
-    localStorage.setItem('nuvo-ui-sidebar', next ? 'collapsed' : 'open')
-  }
-
-  // Close mobile sidebar on route change
   React.useEffect(() => {
     setMobileOpen(false)
   }, [pathname])
 
-  // Lock body scroll while mobile menu is open
   React.useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = 'hidden'
@@ -473,6 +449,17 @@ export function DocsShell({ children }: { children: React.ReactNode }) {
       document.body.style.overflow = ''
     }
   }, [mobileOpen])
+
+  // Standalone pages bypass the docs shell completely
+  if (pathname === '/crud') {
+    return <>{children}</>
+  }
+
+  function toggleCollapsed() {
+    const next = !collapsed
+    setCollapsed(next)
+    localStorage.setItem('nuvo-ui-sidebar', next ? 'collapsed' : 'open')
+  }
 
   return (
     <div className="flex min-h-screen bg-background">
@@ -582,17 +569,7 @@ export function DocsShell({ children }: { children: React.ReactNode }) {
             <div className="h-10 w-px bg-border" />
             <ThemeSwitcher />
             <div className="h-10 w-px bg-border" />
-            <button
-              onClick={toggle}
-              aria-label={isLight ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'}
-              className={cn(
-                'flex h-10 w-10 items-center justify-center rounded-md transition-colors',
-                'text-muted-foreground hover:bg-muted hover:text-foreground',
-                'focus:outline-none focus:ring-2 focus:ring-ring'
-              )}
-            >
-              {isLight ? <MoonIcon /> : <SunIcon />}
-            </button>
+            <ModeSwitcher />
           </div>
         </header>
 

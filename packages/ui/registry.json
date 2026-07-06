@@ -30,6 +30,41 @@
       "devDependencies": []
     },
     {
+      "name": "textarea",
+      "description": "Textarea con label, helper text y variantes error/success",
+      "file": "textarea/index.tsx",
+      "dependencies": ["class-variance-authority"],
+      "devDependencies": []
+    },
+    {
+      "name": "checkbox",
+      "description": "Checkbox accesible con label, descripción e indeterminate",
+      "file": "checkbox/index.tsx",
+      "dependencies": ["@radix-ui/react-checkbox"],
+      "devDependencies": []
+    },
+    {
+      "name": "radio",
+      "description": "RadioGroup + Radio accesible con label y descripción",
+      "file": "radio/index.tsx",
+      "dependencies": ["@radix-ui/react-radio-group"],
+      "devDependencies": []
+    },
+    {
+      "name": "switch",
+      "description": "Switch toggle accesible con label y descripción",
+      "file": "switch/index.tsx",
+      "dependencies": ["@radix-ui/react-switch"],
+      "devDependencies": []
+    },
+    {
+      "name": "select",
+      "description": "Select con grupos, placeholder y validación, incluye MultiSelect con checkboxes",
+      "file": "select/index.tsx",
+      "dependencies": ["@radix-ui/react-select", "@radix-ui/react-dropdown-menu"],
+      "devDependencies": []
+    },
+    {
       "name": "modal",
       "description": "Modal accesible con Radix Dialog y Modal.Footer composable",
       "file": "modal/index.tsx",
@@ -42,7 +77,7 @@
       "file": "stat-card/index.tsx",
       "dependencies": [],
       "devDependencies": []
-    },
+    }, 
     {
       "name": "data-table",
       "description": "Tabla con API 3 capas: JSON / render / compound. Sort + búsqueda",
@@ -62,6 +97,27 @@
       "description": "Sidebar colapsable con JSON items, submenús y localStorage",
       "file": "sidebar/index.tsx",
       "dependencies": ["@radix-ui/react-collapsible"],
+      "devDependencies": []
+    },
+    {
+      "name": "tabs",
+      "description": "Tabs line/pill con Radix — keyboard navigation incluida",
+      "file": "tabs/index.tsx",
+      "dependencies": ["@radix-ui/react-tabs"],
+      "devDependencies": []
+    },
+    {
+      "name": "breadcrumb",
+      "description": "Navegación Breadcrumb con separador personalizable",
+      "file": "breadcrumb/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "pagination",
+      "description": "Paginación con ellipsis automático y navegación accesible",
+      "file": "pagination/index.tsx",
+      "dependencies": [],
       "devDependencies": []
     },
     {
@@ -100,6 +156,119 @@
       "dependencies": [],
       "devDependencies": [],
       "registryDependencies": ["calendar"]
+    },
+    {
+      "name": "spinner",
+      "description": "Spinner animado con variantes de tamaño y color",
+      "file": "spinner/index.tsx",
+      "dependencies": ["class-variance-authority"],
+      "devDependencies": []
+    },
+    {
+      "name": "skeleton",
+      "description": "Skeleton placeholder con variantes text/rect/circle y pulse animation",
+      "file": "skeleton/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "alert",
+      "description": "Alert con variantes info/success/warning/error y dismiss opcional",
+      "file": "alert/index.tsx",
+      "dependencies": ["class-variance-authority"],
+      "devDependencies": []
+    },
+    {
+      "name": "toast",
+      "description": "Toast/Snackbar con ToastProvider, useToast hook, auto-dismiss y progress bar",
+      "file": "toast/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "divider",
+      "description": "Separador horizontal/vertical con etiqueta opcional",
+      "file": "divider/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "avatar",
+      "description": "Avatar con imagen, iniciales, status dot y AvatarGroup apilable",
+      "file": "avatar/index.tsx",
+      "dependencies": ["class-variance-authority"],
+      "devDependencies": []
+    },
+    {
+      "name": "tooltip",
+      "description": "Tooltip accesible con Radix — posición y delay configurables",
+      "file": "tooltip/index.tsx",
+      "dependencies": ["@radix-ui/react-tooltip"],
+      "devDependencies": []
+    },
+    {
+      "name": "dropdown",
+      "description": "DropdownMenu con Radix — items, separadores, labels, atajos de teclado",
+      "file": "dropdown/index.tsx",
+      "dependencies": ["@radix-ui/react-dropdown-menu"],
+      "devDependencies": []
+    },
+    {
+      "name": "stepper",
+      "description": "Stepper horizontal/vertical con estados complete/active/upcoming",
+      "file": "stepper/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "timeline",
+      "description": "Timeline vertical con ícono, fecha y variantes de color",
+      "file": "timeline/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "file-upload",
+      "description": "Zona de carga drag & drop con preview de archivos y validación de tamaño",
+      "file": "file-upload/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "login",
+      "description": "Pantalla de login con glassmorphism, borde degradado y validación con burbujas",
+      "file": "login/index.tsx",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": ["input", "button"]
+    },
+    {
+      "name": "dashboard-layout",
+      "description": "Layout fijo con sidebar, header y footer como slots — base para dashboards",
+      "file": "dashboard-layout/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "theme-provider",
+      "description": "Proveedor de tema dark/light/system con persistencia en localStorage",
+      "file": "theme-provider/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "export-csv",
+      "description": "Botón de descarga CSV con mapeo de columnas, formato y BOM UTF-8",
+      "file": "export-csv/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
+    },
+    {
+      "name": "print-button",
+      "description": "Botón de impresión / PDF con soporte de PrintArea para imprimir solo una región",
+      "file": "print-button/index.tsx",
+      "dependencies": [],
+      "devDependencies": []
     }
   ]
 }

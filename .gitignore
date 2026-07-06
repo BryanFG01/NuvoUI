@@ -17,3 +17,12 @@ dist/
 !.env.example
 pnpm-lock.yaml
 .claude/
+
+# Stray tsc output — @nuvo-ui/ui ships its .tsx sources directly (see exports
+# in packages/ui/package.json), so compiled artifacts here just shadow the
+# source during bundler resolution instead of being a real build step.
+packages/ui/src/**/*.js
+packages/ui/src/**/*.js.map
+packages/ui/src/**/*.d.ts
+packages/ui/src/**/*.d.ts.map
+apps/docs/tsconfig.tsbuildinfo

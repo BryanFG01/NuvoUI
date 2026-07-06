@@ -1,0 +1,80 @@
+﻿apps/docs/app/select/page.tsx(4,37): error TS2307: Cannot find module '@nuvo-ui/ui' or its corresponding type declarations.
+  There are types at 'C:/Users/pcc/Desktop/LibreriaUI/apps/docs/node_modules/@nuvo-ui/ui/src/index.ts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+apps/docs/app/select/page.tsx(5,93): error TS6142: Module '../doc-ui' was resolved to 'C:/Users/pcc/Desktop/LibreriaUI/apps/docs/app/doc-ui.tsx', but '--jsx' is not set.
+apps/docs/app/select/page.tsx(12,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(13,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(14,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(15,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(18,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(19,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(21,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(22,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(23,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(35,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(36,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(37,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(61,20): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(65,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(66,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(67,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(79,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(80,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(81,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(95,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(100,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(101,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(126,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(128,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(129,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+apps/docs/app/select/page.tsx(141,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+node_modules/.pnpm/@types+prop-types@15.7.15/node_modules/@types/prop-types/index.d.ts(16,38): error TS2304: Cannot find name 'Iterable'.
+node_modules/.pnpm/@types+react@18.3.31/node_modules/@types/react/index.d.ts(448,26): error TS2304: Cannot find name 'Iterable'.
+node_modules/.pnpm/@types+react@18.3.31/node_modules/@types/react/index.d.ts(486,10): error TS2456: Type alias 'ReactNode' circularly references itself.
+node_modules/.pnpm/@types+react@18.3.31/node_modules/@types/react/index.d.ts(490,11): error TS2304: Cannot find name 'Iterable'.
+packages/ui/src/components/select/index.tsx(50,10): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(50,167): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(53,10): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(53,167): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(78,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(80,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(85,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(91,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(103,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(104,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(105,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(109,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(110,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(121,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(123,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(125,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(130,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(141,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(142,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(143,25): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(148,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(158,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(167,10): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(167,167): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(198,92): error TS2550: Property 'includes' does not exist on type 'string[]'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2016' or later.
+packages/ui/src/components/select/index.tsx(217,32): error TS2550: Property 'includes' does not exist on type 'string[]'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2016' or later.
+packages/ui/src/components/select/index.tsx(228,36): error TS2550: Property 'includes' does not exist on type 'string[]'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2016' or later.
+packages/ui/src/components/select/index.tsx(238,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(240,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(245,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(246,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(247,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(262,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(263,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(263,53): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(267,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(268,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(273,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(274,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(282,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(289,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(292,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(294,49): error TS2550: Property 'includes' does not exist on type 'string[]'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2016' or later.
+packages/ui/src/components/select/index.tsx(296,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(307,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(314,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/components/select/index.tsx(325,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.

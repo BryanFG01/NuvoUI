@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@libreria-ui/ui"],
+  transpilePackages: ["@nuvo-ui/ui"],
 }
 
 module.exports = nextConfig

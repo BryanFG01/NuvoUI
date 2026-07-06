@@ -43,8 +43,15 @@ export interface ChartProps {
   tooltipFormatter?: TooltipProps<number, string>["formatter"]
 }
 
-// ─── Paleta por defecto ───────────────────────────────────────────────────────
-const DEFAULT_COLORS = ["#3b82f6", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4"]
+// ─── Colores por defecto — usan CSS vars del tema ─────────────────────────────
+const DEFAULT_COLORS = [
+  "hsl(var(--primary))",
+  "hsl(var(--destructive))",
+  "hsl(148 60% 45%)",
+  "hsl(38 92% 50%)",
+  "hsl(270 67% 60%)",
+  "hsl(197 71% 53%)",
+]
 
 function resolveColors(color: string | string[] | undefined, count: number): string[] {
   if (!color) return DEFAULT_COLORS.slice(0, Math.max(count, 1))
@@ -52,20 +59,39 @@ function resolveColors(color: string | string[] | undefined, count: number): str
   return [color]
 }
 
-// ─── Estilos compartidos ──────────────────────────────────────────────────────
-const axisStyle = {
-  tick: { fill: "hsl(215.4 16.3% 46.9%)", fontSize: 12 },
-  axisLine: false as const,
-  tickLine: false as const,
+// ─── Hook: detecta cambio de tema y devuelve una key que sube ─────────────────
+function useThemeKey(): number {
+  const [key, setKey] = React.useState(0)
+  React.useEffect(() => {
+    if (typeof window === "undefined") return
+    const observer = new MutationObserver(() => setKey(k => k + 1))
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    })
+    return () => observer.disconnect()
+  }, [])
+  return key
 }
 
-const tooltipContentStyle = {
-  background: "hsl(var(--background))",
-  border: "1px solid hsl(var(--border))",
-  borderRadius: "8px",
-  color: "hsl(var(--foreground))",
-  fontSize: 12,
-  padding: "8px 12px",
+// ─── Estilos que referencian CSS vars (se reevalúan en cada render) ───────────
+function makeAxisStyle() {
+  return {
+    tick: { fill: "hsl(var(--muted-foreground))", fontSize: 12 },
+    axisLine: false as const,
+    tickLine: false as const,
+  }
+}
+
+function makeTooltipStyle() {
+  return {
+    background: "hsl(var(--background))",
+    border: "1px solid hsl(var(--border))",
+    borderRadius: "8px",
+    color: "hsl(var(--foreground))",
+    fontSize: 12,
+    padding: "8px 12px",
+  }
 }
 
 // ─── Componente ───────────────────────────────────────────────────────────────
@@ -81,9 +107,14 @@ function Chart({
   className,
   tooltipFormatter,
 }: ChartProps) {
+  const themeKey = useThemeKey()
   const keys = Array.isArray(yKey) ? yKey : [yKey]
   const colors = resolveColors(color, keys.length)
   const commonMargin = { top: 5, right: 10, left: 0, bottom: 5 }
+
+  // Se recalculan en cada render para capturar el tema actual
+  const axisStyle = makeAxisStyle()
+  const tooltipContentStyle = makeTooltipStyle()
 
   const renderInner = () => {
     switch (type) {
@@ -120,7 +151,8 @@ function Chart({
                 type="monotone"
                 dataKey={key}
                 stroke={colors[i] ?? DEFAULT_COLORS[0]}
-                fill={`${colors[i] ?? DEFAULT_COLORS[0]}20`}
+                fill={colors[i] ?? DEFAULT_COLORS[0]}
+                fillOpacity={0.12}
                 strokeWidth={2}
               />
             ))}
@@ -179,7 +211,8 @@ function Chart({
 
   return (
     <div className={cn("w-full", className)}>
-      <ResponsiveContainer width="100%" height={height}>
+      {/* key={themeKey} fuerza remount completo de Recharts al cambiar el tema */}
+      <ResponsiveContainer key={themeKey} width="100%" height={height}>
         {renderInner()}
       </ResponsiveContainer>
     </div>

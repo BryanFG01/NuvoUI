@@ -13,10 +13,10 @@ const monthly = [
 ]
 
 const pie = [
-  { categoria: "Orgánico",    valor: 42 },
-  { categoria: "Redes",       valor: 28 },
-  { categoria: "Email",       valor: 18 },
-  { categoria: "Referidos",   valor: 12 },
+  { categoria: "Orgánico",  valor: 42 },
+  { categoria: "Redes",     valor: 28 },
+  { categoria: "Email",     valor: 18 },
+  { categoria: "Referidos", valor: 12 },
 ]
 
 export default function ChartPage() {
@@ -26,7 +26,7 @@ export default function ChartPage() {
         <DocTitle>Chart</DocTitle>
         <DocSubtitle>
           Wrapper de Recharts con API JSON pura. Soporta line, bar, area y pie.
-          Responsive por defecto. Tooltip y colores personalizables.
+          Responsive por defecto. Tooltip y colores personalizables. Los colores adaptan al tema automáticamente.
         </DocSubtitle>
       </div>
 
@@ -35,14 +35,21 @@ export default function ChartPage() {
 
       <DocSection title="Line chart">
         <Preview>
-          <Chart type="line" data={monthly} xKey="mes" yKey="ventas" color="#3b82f6" height={250} />
+          <Chart
+            type="line"
+            data={monthly}
+            xKey="mes"
+            yKey="ventas"
+            color="hsl(var(--primary))"
+            height={250}
+          />
         </Preview>
         <Code code={`<Chart
   type="line"
   data={monthly}
   xKey="mes"
   yKey="ventas"
-  color="#3b82f6"
+  color="hsl(var(--primary))"
   height={250}
 />`} />
       </DocSection>
@@ -54,7 +61,7 @@ export default function ChartPage() {
             data={monthly}
             xKey="mes"
             yKey={["ventas", "costos"]}
-            color={["#3b82f6", "#10b981"]}
+            color={["hsl(var(--primary))", "hsl(var(--muted-foreground))"]}
             legend
             height={250}
           />
@@ -63,17 +70,24 @@ export default function ChartPage() {
   type="bar"
   data={monthly}
   xKey="mes"
-  yKey={["ventas", "costos"]}   // múltiples series
-  color={["#3b82f6", "#10b981"]}
+  yKey={["ventas", "costos"]}
+  color={["hsl(var(--primary))", "hsl(var(--muted-foreground))"]}
   legend
 />`} />
       </DocSection>
 
       <DocSection title="Area chart">
         <Preview>
-          <Chart type="area" data={monthly} xKey="mes" yKey="ventas" color="#8b5cf6" height={250} />
+          <Chart
+            type="area"
+            data={monthly}
+            xKey="mes"
+            yKey="ventas"
+            color="hsl(var(--primary))"
+            height={250}
+          />
         </Preview>
-        <Code code={`<Chart type="area" data={data} xKey="mes" yKey="ventas" color="#8b5cf6" />`} />
+        <Code code={`<Chart type="area" data={data} xKey="mes" yKey="ventas" color="hsl(var(--primary))" />`} />
       </DocSection>
 
       <DocSection title="Pie chart">
@@ -109,7 +123,7 @@ export default function ChartPage() {
             { name: "data",             type: "Record<string, unknown>[]",       description: "Array de puntos de datos" },
             { name: "xKey",             type: "string", default: '"name"',       description: "Campo para el eje X" },
             { name: "yKey",             type: "string | string[]", default: '"value"', description: "Campo(s) para el eje Y. Array = múltiples series" },
-            { name: "color",            type: "string | string[]", default: "paleta",  description: "Color(es) hex de las series" },
+            { name: "color",            type: "string | string[]", default: "paleta",  description: 'Color(es) de las series. Acepta hex, hsl(), hsl(var(--token)) o cualquier valor CSS válido' },
             { name: "height",           type: "number",            default: "300",     description: "Altura en píxeles" },
             { name: "legend",           type: "boolean",           default: "false",   description: "Muestra la leyenda" },
             { name: "grid",             type: "boolean",           default: "true",    description: "Muestra la cuadrícula" },

@@ -58,15 +58,40 @@ Agrega esto en tu `globals.css`:
 | `badge` | Etiqueta de estado con dot indicator | JSON props |
 | `card` | Card con Header, Title, Description, Content, Footer | Compound |
 | `input` | Input con label, helper text y validación | forwardRef props |
+| `textarea` | Textarea con label, helper text y variantes error/success | forwardRef props |
+| `checkbox` | Checkbox accesible con label, descripción e indeterminate | JSON props |
+| `radio` | RadioGroup + Radio accesible con label y descripción | JSON props |
+| `switch` | Switch toggle accesible con label y descripción | JSON props |
+| `select` | Select con grupos, placeholder y validación, incluye MultiSelect con checkboxes | JSON props |
 | `modal` | Modal accesible con Radix Dialog y Modal.Footer | Compound |
 | `stat-card` | Métrica de dashboard con trend y formato automático | JSON props |
 | `data-table` | Tabla con sorting, paginación y búsqueda | JSON / Compound |
 | `data-grid` | Tabla avanzada con TanStack Table v8 | JSON props |
 | `sidebar` | Sidebar colapsable con submenús y localStorage | JSON items |
+| `tabs` | Tabs line/pill con Radix — keyboard navigation incluida | Compound |
+| `breadcrumb` | Navegación breadcrumb con separador personalizable | JSON props |
+| `pagination` | Paginación con ellipsis automático y navegación accesible | JSON props |
 | `chart` | Wrapper de Recharts: line, bar, area, pie | JSON props |
+| `calendar` | Calendario custom sin dependencias: grid, year picker, min/max | JSON props |
 | `date-picker` | Selector de fecha con calendario custom, sin dependencias | JSON props |
-| `dynamic-filter` | Filtros dinámicos configurables por JSON (7 tipos de campo) | JSON props |
 | `floating-actions` | Botones flotantes drag & drop configurables por JSON | JSON props |
+| `dynamic-filter` | Filtros dinámicos configurables por JSON (7 tipos de campo) | JSON props |
+| `spinner` | Spinner animado con variantes de tamaño y color | CVA props |
+| `skeleton` | Skeleton placeholder con variantes text/rect/circle | JSON props |
+| `alert` | Alert con variantes info/success/warning/error y dismiss opcional | CVA props |
+| `toast` | Toast/Snackbar con ToastProvider, useToast hook y auto-dismiss | Compound |
+| `divider` | Separador horizontal/vertical con etiqueta opcional | JSON props |
+| `avatar` | Avatar con imagen, iniciales, status dot y AvatarGroup apilable | CVA props |
+| `tooltip` | Tooltip accesible con Radix — posición y delay configurables | JSON props |
+| `dropdown` | DropdownMenu con Radix — items, separadores, labels, atajos | Compound |
+| `stepper` | Stepper horizontal/vertical con estados complete/active/upcoming | JSON props |
+| `timeline` | Timeline vertical con ícono, fecha y variantes de color | JSON props |
+| `file-upload` | Zona de carga drag & drop con preview y validación de tamaño | JSON props |
+| `login` | Pantalla de login con glassmorphism y validación con burbujas | JSON props |
+| `dashboard-layout` | Layout fijo con sidebar, header y footer como slots | Compound |
+| `theme-provider` | Proveedor de tema dark/light/system con persistencia | Compound |
+| `export-csv` | Botón de descarga CSV con mapeo de columnas y BOM UTF-8 | JSON props |
+| `print-button` | Botón de impresión/PDF con soporte de PrintArea | JSON props |
 
 ---
 

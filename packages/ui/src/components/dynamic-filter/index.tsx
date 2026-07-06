@@ -122,11 +122,119 @@ function TextField({ filter, value, onChange }: {
   )
 }
 
+const DONUT_SIZE = 40
+const DONUT_STROKE = 5
+const DONUT_RADIUS = (DONUT_SIZE - DONUT_STROKE) / 2
+const DONUT_CIRCUMFERENCE = 2 * Math.PI * DONUT_RADIUS
+
+function angleToFraction(cx: number, cy: number, clientX: number, clientY: number) {
+  const dx = clientX - cx
+  const dy = clientY - cy
+  let deg = (Math.atan2(dy, dx) * 180) / Math.PI + 90
+  if (deg < 0) deg += 360
+  return deg / 360
+}
+
+function DonutNumberField({ filter, value, onChange }: {
+  filter: FilterConfig
+  value: string | undefined
+  onChange: (v: string | undefined) => void
+}) {
+  const min = Number(filter.min)
+  const max = Number(filter.max)
+  const numericValue = value !== undefined && value !== "" ? Number(value) : undefined
+  const displayValue = numericValue ?? min
+  const fraction = max > min ? Math.min(1, Math.max(0, (displayValue - min) / (max - min))) : 0
+
+  const dialRef = React.useRef<HTMLDivElement>(null)
+
+  function commitFromPointer(clientX: number, clientY: number) {
+    const el = dialRef.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    const frac = angleToFraction(rect.left + rect.width / 2, rect.top + rect.height / 2, clientX, clientY)
+    const raw = Math.round(min + frac * (max - min))
+    onChange(String(Math.min(max, Math.max(min, raw))))
+  }
+
+  function handlePointerDown(e: React.PointerEvent<HTMLDivElement>) {
+    e.currentTarget.setPointerCapture(e.pointerId)
+    commitFromPointer(e.clientX, e.clientY)
+  }
+
+  function handlePointerMove(e: React.PointerEvent<HTMLDivElement>) {
+    if (e.buttons !== 1) return
+    commitFromPointer(e.clientX, e.clientY)
+  }
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
+    let next = displayValue
+    if (e.key === "ArrowUp" || e.key === "ArrowRight") next = Math.min(max, displayValue + 1)
+    else if (e.key === "ArrowDown" || e.key === "ArrowLeft") next = Math.max(min, displayValue - 1)
+    else if (e.key === "Home") next = min
+    else if (e.key === "End") next = max
+    else return
+    e.preventDefault()
+    onChange(String(next))
+  }
+
+  return (
+    <div className="flex items-center gap-3">
+      <div
+        ref={dialRef}
+        role="slider"
+        tabIndex={0}
+        aria-label={filter.label}
+        aria-valuemin={min}
+        aria-valuemax={max}
+        aria-valuenow={displayValue}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onKeyDown={handleKeyDown}
+        className={cn(
+          "relative h-9 w-9 shrink-0 touch-none select-none rounded-full",
+          "cursor-grab active:cursor-grabbing",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+        )}
+      >
+        <svg viewBox={`0 0 ${DONUT_SIZE} ${DONUT_SIZE}`} className="h-full w-full -rotate-90">
+          <circle
+            cx={DONUT_SIZE / 2} cy={DONUT_SIZE / 2} r={DONUT_RADIUS}
+            fill="none" stroke="currentColor" strokeWidth={DONUT_STROKE}
+            className="text-muted"
+          />
+          <circle
+            cx={DONUT_SIZE / 2} cy={DONUT_SIZE / 2} r={DONUT_RADIUS}
+            fill="none" stroke="currentColor" strokeWidth={DONUT_STROKE}
+            strokeLinecap="round"
+            strokeDasharray={DONUT_CIRCUMFERENCE}
+            strokeDashoffset={DONUT_CIRCUMFERENCE * (1 - fraction)}
+            className="text-primary transition-[stroke-dashoffset] duration-150 ease-out"
+          />
+        </svg>
+        <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[10px] font-bold text-foreground">
+          {displayValue}
+        </span>
+      </div>
+
+      <span className="text-xs text-muted-foreground">
+        {numericValue === undefined ? `Sin mínimo (${min}–${max})` : `≥ ${displayValue}`}
+      </span>
+    </div>
+  )
+}
+
 function NumberField({ filter, value, onChange }: {
   filter: FilterConfig
   value: string | undefined
   onChange: (v: string | undefined) => void
 }) {
+  const hasRange = filter.min !== undefined && filter.max !== undefined
+
+  if (hasRange) {
+    return <DonutNumberField filter={filter} value={value} onChange={onChange} />
+  }
+
   return (
     <input
       type="number"
@@ -135,7 +243,10 @@ function NumberField({ filter, value, onChange }: {
       max={filter.max}
       onChange={(e) => onChange(e.target.value || undefined)}
       placeholder={filter.placeholder ?? "0"}
-      className={inputCls}
+      className={cn(
+        inputCls,
+        "[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+      )}
     />
   )
 }
